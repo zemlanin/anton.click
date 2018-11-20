@@ -20,9 +20,8 @@ module.exports = (req, res) => {
     res.end();
     return;
   }
-  
-  
-  console.log(`302 ${pathname}`);
+
+  console.log(`302 ${pathname} -> ${routes[pathname]}`);
   res.writeHead(302, { "Location": routes[pathname] });
   res.end();
 }
