@@ -1,0 +1,1 @@
+module.exports = "https://zemlan.in/0x0badc0de.html";
