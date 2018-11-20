@@ -13,5 +13,16 @@ const routes = routesContext
 
 module.exports = (req, res) => {
   const { pathname } = url.parse(req.url);
-  res.end(`${pathname}\n${routes[pathname]}\n${JSON.stringify(routes)}`);
+
+  if (!routes[pathname]) {
+    console.log(`404 ${pathname}`);
+    res.writeHead(404);
+    res.end();
+    return;
+  }
+  
+  
+  console.log(`302 ${pathname}`);
+  res.writeHead(302, { "Location": routes[pathname] });
+  res.end();
 }
