@@ -16,7 +16,7 @@ module.exports = (req, res) => {
 
   if (!routes[pathname]) {
     console.log(`404 ${pathname}`);
-    res.writeHead(404);
+    res.writeHead(302, { "Location": "/" });
     res.end();
     return;
   }
