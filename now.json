@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "alias": "anton.click",
   "builds": [
     {"src": "index.js", "use": "@now/node"},
     {"src": "routes/*", "use": "@now/static"}
