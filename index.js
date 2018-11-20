@@ -5,12 +5,13 @@ const routes = routesContext
   .keys()
   .reduce(
     (acc, f) => {
-      acc[f] = routesContext(f);
+      acc[f.match(/^.(.+)\.js$/i)[1]] = routesContext(f);
       return acc;
     },
     {}
   );
 
 module.exports = (req, res) => {
-  res.end(`sup ${url.parse(req.url).pathname}\n${JSON.stringify(routes)}`);
+  const { pathname } = url.parse(req.url);
+  res.end(`${pathname}\n${routes[pathname]}\n${JSON.stringify(routes)}`);
 }
