@@ -6,8 +6,7 @@
     {"src": "routes/*", "use": "@now/static"}
   ],
   "routes": [
-    { "src": "/.+", "dest": "/index.js" },
-    { "src": "/", "status": 302, "headers": { "Location": "https://anton.codes/" } }
+    { "src": "/.+", "dest": "/index.js" }
   ],
   "regions": ["cdg"]
 }

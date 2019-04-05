@@ -10,7 +10,7 @@ module.exports = (req, res) => {
   let { pathname } = url.parse(req.url);
 
   if (!routes[pathname]) {
-    pathname = "index";
+    pathname = "/index";
   }
 
   console.log(`302 ${pathname} -> ${routes[pathname]}`);
