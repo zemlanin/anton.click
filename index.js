@@ -13,7 +13,9 @@ module.exports = (req, res) => {
     pathname = "/index";
   }
 
-  console.log(`302 ${pathname} -> ${routes[pathname]}`);
-  res.writeHead(302, { Location: routes[pathname] });
+  res.writeHead(302, {
+    Location: routes[pathname],
+    "Cache-Control": `s-maxage={60 * 60 * 24 * 365}, max-age=0`
+  });
   res.end();
 };
