@@ -8,5 +8,6 @@
   "routes": [
     { "src": "/.+", "dest": "/index.js" },
     { "src": "/", "status": 302, "headers": { "Location": "https://anton.codes/" } }
-  ]
+  ],
+  "regions": ["cdg"]
 }
