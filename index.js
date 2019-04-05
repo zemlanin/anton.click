@@ -7,13 +7,10 @@ const routes = routesContext.keys().reduce((acc, f) => {
 }, {});
 
 module.exports = (req, res) => {
-  const { pathname } = url.parse(req.url);
+  let { pathname } = url.parse(req.url);
 
   if (!routes[pathname]) {
-    console.log(`404 ${pathname}`);
-    res.writeHead(302, { Location: "/" });
-    res.end();
-    return;
+    pathname = "index";
   }
 
   console.log(`302 ${pathname} -> ${routes[pathname]}`);
