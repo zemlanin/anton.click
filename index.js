@@ -1,8 +1,14 @@
+const fs = require("fs");
 const url = require("url");
+const path = require("path");
 
-const routesContext = require.context("./routes", true, /\.js$/);
-const routes = routesContext.keys().reduce((acc, f) => {
-  acc[f.match(/^.(.+)\.js$/i)[1]] = routesContext(f);
+const ROUTES_DIR = path.resolve(__dirname, "routes");
+
+const routes = fs.readdirSync(ROUTES_DIR).reduce((acc, f) => {
+  acc["/" + f] = fs
+    .readFileSync(path.join(ROUTES_DIR, f))
+    .toString()
+    .trim();
   return acc;
 }, {});
 

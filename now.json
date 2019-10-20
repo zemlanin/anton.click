@@ -2,11 +2,14 @@
   "version": 2,
   "alias": "anton.click",
   "builds": [
-    {"src": "index.js", "use": "@now/node"},
-    {"src": "routes/*", "use": "@now/static"}
+    {
+      "src": "index.js",
+      "use": "@now/node",
+      "config": {
+        "includeFiles": ["routes/**"]
+      }
+    }
   ],
-  "routes": [
-    { "src": "/.+", "dest": "/index.js" }
-  ],
+  "routes": [{ "src": "/.+", "dest": "/index.js" }],
   "regions": ["cdg"]
 }
