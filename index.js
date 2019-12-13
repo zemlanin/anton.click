@@ -17,16 +17,21 @@ module.exports = (req, res) => {
 
   const segments = pathname.split(/\/+/).filter(Boolean);
 
-  let route;
+  let key, route;
 
   while (segments.length) {
-    route = routes[segments.join("-")];
+    key = segments.join("-");
 
-    if (route) {
+    if (routes[key]) {
+      route = routes[key];
       break;
     }
 
     segments.pop();
+  }
+
+  if (route) {
+    console.log(`${pathname} -> ${route} (${key})`);
   }
 
   res.writeHead(302, {
