@@ -2,7 +2,7 @@ const fs = require("fs");
 const url = require("url");
 const path = require("path");
 
-const ROUTES_DIR = path.resolve(__dirname, "routes");
+const ROUTES_DIR = path.resolve(__dirname, "..", "routes");
 
 const routes = fs.readdirSync(ROUTES_DIR).reduce((acc, f) => {
   acc[f] = fs

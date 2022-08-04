@@ -1,0 +1,13 @@
+{
+  "alias": "anton.click",
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 1,
+      "includeFiles": "routes/**"
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/index" }
+  ],
+  "regions": ["cdg"]
+}
