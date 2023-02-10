@@ -23,6 +23,15 @@ module.exports = (req, res) => {
     res.end();
     return;
   }
+  
+  if (req.headers.accept && req.headers.accept.match(/application\/(activity|ld)\+json/i)) {
+    res.writeHead(302, {
+      Location: "https://mastodon.devua.club/users/zemlanin",
+      "Cache-Control": `s-maxage=${60 * 60 * 24 * 365}, max-age=0`
+    });
+    res.end();
+    return;
+  }
 
   const segments = pathname.split(/\/+/).filter(Boolean);
 
