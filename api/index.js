@@ -25,7 +25,10 @@ module.exports = (req, res) => {
   }
   
   if (req.headers.accept && req.headers.accept.match(/application\/(activity|ld)\+json/i)) {
-    res.write(JSON.stringify({
+    res.writeHead(200, {
+      "Content-Type": "application/activity+json"
+    });
+    res.end(JSON.stringify({
       "@context": "https://www.w3.org/ns/activitystreams",
       "summary": "Test",
       "type": "Collection",
@@ -35,10 +38,6 @@ module.exports = (req, res) => {
         "https://zemlan.in/actor/blog"
       ]
     }));
-    res.writeHead(200, {
-      "Content-Type": "application/activity+json"
-    });
-    res.end();
     
     return;
     res.writeHead(302, {
