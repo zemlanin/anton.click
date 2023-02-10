@@ -25,6 +25,22 @@ module.exports = (req, res) => {
   }
   
   if (req.headers.accept && req.headers.accept.match(/application\/(activity|ld)\+json/i)) {
+    res.write(JSON.stringify({
+      "@context": "https://www.w3.org/ns/activitystreams",
+      "summary": "Test",
+      "type": "Collection",
+      "totalItems": 2,
+      "items": [
+        "https://mastodon.devua.club/users/zemlanin",
+        "https://zemlan.in/actor/blog"
+      ]
+    }));
+    res.writeHead(200, {
+      "Content-Type": "application/activity+json"
+    });
+    res.end();
+    
+    return;
     res.writeHead(302, {
       Location: "https://mastodon.devua.club/users/zemlanin",
       "Cache-Control": `s-maxage=${60 * 60 * 24 * 365}, max-age=0`
